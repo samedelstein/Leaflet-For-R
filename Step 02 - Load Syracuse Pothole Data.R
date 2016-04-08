@@ -9,6 +9,17 @@ PotholeSpreadsheet <- gs_title("DO Camera")
 Potholes <- PotholeSpreadsheet %>% gs_read(ws = "Sheet1")
 #convert to data frame
 PotholeDF <- data.frame(Potholes)
+head(PotholeDF)
+
+###################
+# Can also import using RCurl if you are ok with data being public
+###################
+
+my.url <- "https://docs.google.com/spreadsheets/d/1IGT4voD8YmPVhr43Ha7C9ql4otojb097HFH0qGYdlgY/pub?output=csv"
+Potholes.raw <- getURL(my.url)
+PotholesCurl <- read.csv(textConnection(Potholes.raw))
+head(PotholesCurl)
+###################
 
 #create a custom marker for the map
 ottoIcon <- makeIcon(
